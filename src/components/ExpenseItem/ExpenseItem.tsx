@@ -1,18 +1,23 @@
-import React from 'react'
-import './ExpenseItem.css'
+import React from 'react';
+import './ExpenseItem.css';
+import ExpenseDate from '../ExpenseDate/ExpenseDate';
 
 
-const ExpenseItem = () => {
-    const expenseDate: any = new Date(2021,2,28);
-    const expenseTitle : string = 'Car insurance';
-    const expenseAmount: number = 294.67;
+type Expense = {
+    title:string;
+    amount:number;
+    date: Date;
+  }
+  
+
+const ExpenseItem = (props: Expense) => {
 
   return (
     <div className='expense-item'>
-      <div>{expenseDate}</div>
+        <ExpenseDate date={props.date}/>
       <div className='expense-item__description'>
-        <h2>{expenseTitle}</h2>
-        <div className='expense-item__price'>{expenseAmount}</div>
+        <h2>{props.title}</h2>
+        <div className='expense-item__price'>${props.amount}</div>
       </div>
     </div>
   )
